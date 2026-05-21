@@ -1,0 +1,112 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Work+Sans:wght@300;400;500;600;700&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-sans: 'Work Sans', ui-sans-serif, system-ui, sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-glow: var(--primary-glow);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+}
+
+:root {
+  --radius: 1rem;
+  /* Midnight Indigo palette */
+  --background: oklch(0.12 0.04 280);
+  --foreground: oklch(0.97 0.01 280);
+  --surface: oklch(0.17 0.05 280);
+  --surface-elevated: oklch(0.21 0.06 280);
+  --card: oklch(0.17 0.05 280);
+  --card-foreground: oklch(0.97 0.01 280);
+  --popover: oklch(0.17 0.05 280);
+  --popover-foreground: oklch(0.97 0.01 280);
+  --primary: oklch(0.58 0.22 275);
+  --primary-foreground: oklch(0.98 0.01 280);
+  --primary-glow: oklch(0.72 0.2 280);
+  --secondary: oklch(0.25 0.07 280);
+  --secondary-foreground: oklch(0.97 0.01 280);
+  --muted: oklch(0.22 0.05 280);
+  --muted-foreground: oklch(0.7 0.04 280);
+  --accent: oklch(0.65 0.22 280);
+  --accent-foreground: oklch(0.98 0.01 280);
+  --destructive: oklch(0.6 0.24 25);
+  --destructive-foreground: oklch(0.98 0.01 280);
+  --border: oklch(0.28 0.06 280 / 0.6);
+  --input: oklch(0.28 0.06 280);
+  --ring: oklch(0.58 0.22 275);
+
+  --gradient-primary: linear-gradient(135deg, oklch(0.58 0.22 275), oklch(0.72 0.2 295));
+  --gradient-surface: linear-gradient(145deg, oklch(0.19 0.06 280), oklch(0.14 0.05 280));
+  --gradient-glow: radial-gradient(circle at 30% 20%, oklch(0.58 0.22 275 / 0.25), transparent 60%);
+  --shadow-elegant: 0 20px 60px -20px oklch(0.2 0.1 280 / 0.6);
+  --shadow-glow: 0 0 40px oklch(0.58 0.22 275 / 0.35);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    background-image: var(--gradient-glow);
+    background-attachment: fixed;
+  }
+  h1, h2, h3, h4, .font-mono { font-family: var(--font-mono); }
+  ::selection { background: oklch(0.58 0.22 275 / 0.4); }
+}
+
+@layer utilities {
+  .bento-card {
+    background: var(--gradient-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-2xl);
+    padding: 1.75rem;
+    transition: transform 300ms ease, border-color 300ms ease, box-shadow 300ms ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .bento-card:hover {
+    transform: translateY(-4px);
+    border-color: oklch(0.58 0.22 275 / 0.6);
+    box-shadow: var(--shadow-elegant), var(--shadow-glow);
+  }
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .glow-dot {
+    background: var(--gradient-primary);
+    box-shadow: 0 0 20px oklch(0.58 0.22 275 / 0.6);
+  }
+}
