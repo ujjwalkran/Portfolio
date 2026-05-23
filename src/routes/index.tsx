@@ -3,15 +3,61 @@ import {
   Mail, MapPin, Github, Linkedin, ArrowUpRight, Code2, Briefcase,
   GraduationCap, Sparkles, Calendar, Building2, Award, Terminal,
   ExternalLink, FolderGit2,
+  Wrench,
 } from "lucide-react";
+
+
+const SITE_URL = "https://ujjwalkaran.vercel.app";
+const PERSON_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Ujjwal Karan",
+  url: SITE_URL,
+  jobTitle: "Product Engineer",
+  worksFor: {
+    "@type": "Organization",
+    name: "Edgeverve Systems Ltd",
+    url: "https://www.edgeverve.com",
+  },
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "N.M.A.M. Institute of Technology, Nitte",
+  },
+  knowsAbout: [
+    "C++", "Java", "Spring Boot", "REST APIs", "Finacle WMS",
+    "Distributed Systems", "Banking Software", "System Design",
+  ],
+  sameAs: [
+    "https://github.com/ujjwalkaran",
+    "https://www.linkedin.com/in/ujjwalkaran",
+  ],
+};
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Portfolio — Product Engineer at Edgeverve" },
-      { name: "description", content: "Product Engineer with 1.9+ years building Finacle WMS menus, scalable APIs, and intuitive UX at Edgeverve Systems." },
-      { property: "og:title", content: "Portfolio — Product Engineer" },
-      { property: "og:description", content: "Product Engineer specializing in C++, Java, and scalable API development." },
+      { title: "Ujjwal Karan — Product Engineer | C++, Java, Banking Systems" },
+      { name: "description", content: "Ujjwal Karan is a Product Engineer at Edgeverve Systems with 1.9+ years building Finacle WMS modules, scalable REST APIs, and distributed systems in C++ and Java." },
+      { name: "keywords", content: "Ujjwal Karan, Product Engineer, Edgeverve, Finacle WMS, C++, Java, Spring Boot, REST API, Backend Engineer, Software Engineer Portfolio" },
+      { name: "author", content: "Ujjwal Karan" },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1" },
+      { property: "og:title", content: "Ujjwal Karan — Product Engineer" },
+      { property: "og:description", content: "Product Engineer at Edgeverve. Builds scalable banking systems with C++, Java, and Spring Boot." },
+      { property: "og:type", content: "profile" },
+      { property: "og:url", content: SITE_URL },
+      { property: "og:site_name", content: "Ujjwal Karan" },
+      { property: "profile:first_name", content: "Ujjwal" },
+      { property: "profile:last_name", content: "Karan" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Ujjwal Karan — Product Engineer" },
+      { name: "twitter:description", content: "Product Engineer at Edgeverve building scalable banking systems." },
+    ],
+    links: [{ rel: "canonical", href: SITE_URL }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(PERSON_JSON_LD),
+      },
     ],
   }),
   component: Portfolio,
@@ -99,8 +145,8 @@ function Portfolio() {
           {/* Stats */}
           <section className="bento-card md:col-span-2">
             <div className="grid h-full grid-cols-2 gap-4">
-              <Stat value="3+" label="WMS menus led" />
-              <Stat value="10+" label="APIs deployed" />
+              <Stat value="15+" label="WMS menus led" />
+              <Stat value="20+" label="APIs deployed" />
               <Stat value="30%" label="Faster data retrieval" />
               <Stat value="15%" label="Processing time cut" />
             </div>
@@ -125,8 +171,27 @@ function Portfolio() {
                 <h2 className="font-mono text-lg font-semibold">Tech stack</h2>
               </div>
               <div className="flex flex-wrap gap-2">
-                {["C", "C++", "Java", "HTML", "XML", "Jira", "REST APIs", "Finacle WMS"].map((t) => (
-                  <span key={t} className="rounded-md border border-border bg-surface-elevated px-2.5 py-1 font-mono text-xs">
+                {["C", "C++", "Java", "HTML", "XML", "Jira","Linux", "REST APIs", "Finacle WMS"].map((t) => (
+                  <span key={t} className="inline-flex items-center gap-1.5 rounded-md border border-border bg-surface-elevated px-2.5 py-1 font-mono text-xs">
+                    <TechIcon name={t} />
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Tools Section */}
+          <section className="bento-card md:col-span-2">
+            <div className="flex h-full flex-col gap-4">
+              <div className="flex items-center gap-2">
+                <Wrench className="h-5 w-5 text-primary-glow" />
+                <h2 className="font-mono text-lg font-semibold">Tools</h2>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {["Git", "GitHub", "Jira", "Linux", "VS Code", "Vim Editor",].map((t) => (
+                  <span key={t} className="inline-flex items-center gap-1.5 rounded-md border border-border bg-surface-elevated px-2.5 py-1 font-mono text-xs">
+                    <TechIcon name={t} />
                     {t}
                   </span>
                 ))}
@@ -146,12 +211,13 @@ function Portfolio() {
                 company="Edgeverve Systems Ltd"
                 location="Bangalore"
                 period="August 2024 – Present"
-                stack={["C", "C++", "Java", "HTML", "XML"]}
+                stack={["C", "C++", "Java", "HTML", "XML", "SQL", "Git", "Github", "Linux", "Jira"]}
                 points={[
-                  "Led development of 3+ Finacle WMS menus using HTML, XML, C++, and Java — meeting 100% of project deadlines while aligning with dynamic client requirements (Jira-managed).",
-                  "Enhanced 5+ existing menus with key feature upgrades, reducing processing time by 15% and streamlining UX.",
-                  "Designed and deployed 10+ scalable APIs optimizing frontend–backend communication — 30% faster data retrieval.",
-                  "Authored detailed specification files leveraging internal frameworks for seamless integration.",
+                  "Developed and maintained core modules of the Finacle Wealth Management System (WMS), implementing backend business logic and customer-facing functionalities using Java, C++, XML, and enterprise banking frameworks.",
+                  "Designed and developed batch-processing solutions using the Finacle Batch Framework to automate critical financial operations and support complex business workflows.",
+                  "Led a Proof of Concept (POC) to modernize legacy batch applications by migrating C/C++ batch jobs to Java Spring Boot and Spring Batch, improving maintainability and scalability.",
+                  "Engineered scalable REST APIs and integrated backend services, enabling efficient communication between application layers and improving system interoperability.",
+                  "Contributed to the migration of the Finacle WMS codebase from a legacy Linux-based SCM to GitHub, while collaborating in Agile Scrum teams to deliver high-quality software through the complete SDLC.",
                 ]}
                 current
               />
@@ -159,7 +225,7 @@ function Portfolio() {
                 role="Product Engineer Intern"
                 company="Edgeverve Systems Ltd"
                 location="Bangalore"
-                period="February 2024 – August 2024"
+                period="February 2024 – July 2024"
                 stack={["C", "C++", "Java", "HTML", "XML"]}
                 points={[
                   "Executed reconciliation and updates of files for Finacle WMS migration from v11.18 to v11.15 — ensuring data integrity and version compatibility.",
@@ -187,7 +253,7 @@ function Portfolio() {
                   "Exposed REST endpoints for job submission, status tracking, and cancellation",
                 ]}
                 links={[
-                  { label: "GitHub", href: "https://github.com" },
+                  { label: "GitHub", href: "https://github.com/ujjwalkran/Distributed-Task-Scheduler" },
                   { label: "Live Demo", href: "#" },
                 ]}
               />
@@ -217,7 +283,7 @@ function Portfolio() {
             <div className="space-y-4">
               <EducationItem
                 school="N.M.A.M. Institute of Technology, Nitte"
-                degree="B.Tech in Computer Science & Engineering"
+                degree="B.E in Computer Science & Engineering"
                 period="2020 – 2024"
                 score="8.72 / 10 CGPA"
               />
@@ -314,7 +380,8 @@ function ExperienceCard({
       </div>
       <div className="mt-3 flex flex-wrap gap-1.5">
         {stack.map((s) => (
-          <span key={s} className="rounded-md bg-surface px-2 py-0.5 font-mono text-[11px] text-muted-foreground">
+          <span key={s} className="inline-flex items-center gap-1.5 rounded-md bg-surface px-2 py-1 font-mono text-[11px] text-muted-foreground">
+            <TechIcon name={s} />
             {s}
           </span>
         ))}
@@ -389,7 +456,8 @@ function ProjectCard({
       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{description}</p>
       <div className="mt-3 flex flex-wrap gap-1.5">
         {stack.map((s) => (
-          <span key={s} className="rounded-md bg-surface px-2 py-0.5 font-mono text-[11px] text-muted-foreground">
+          <span key={s} className="inline-flex items-center gap-1.5 rounded-md bg-surface px-2 py-1 font-mono text-[11px] text-muted-foreground">
+            <TechIcon name={s} />
             {s}
           </span>
         ))}
@@ -403,5 +471,49 @@ function ProjectCard({
         ))}
       </ul>
     </article>
+  );
+}
+
+const DEVICON_BASE = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/";
+const TECH_ICON_MAP: Record<string, string> = {
+  "c": `${DEVICON_BASE}/c/c-original.svg`,
+  "c++": `${DEVICON_BASE}/cplusplus/cplusplus-original.svg`,
+  "cpp": `${DEVICON_BASE}/cplusplus/cplusplus-original.svg`,
+  "java": `${DEVICON_BASE}/java/java-original.svg`,
+  "html": `${DEVICON_BASE}/html5/html5-original.svg`,
+  "html5": `${DEVICON_BASE}/html5/html5-original.svg`,
+  "xml": `${DEVICON_BASE}/xml/xml-original.svg`,
+  "spring boot": `${DEVICON_BASE}/spring/spring-original.svg`,
+  "mysql": `${DEVICON_BASE}/mysql/mysql-original.svg`,
+  "json": `${DEVICON_BASE}/json/json-original.svg`,
+  "jira": `${DEVICON_BASE}/jira/jira-original.svg`,
+  "sql": `${DEVICON_BASE}/sqldeveloper/sqldeveloper-original.svg`,
+  "git": `${DEVICON_BASE}/git/git-original.svg`,
+  "github": `${DEVICON_BASE}/github/github-original.svg`,
+  "linux": `${DEVICON_BASE}/linux/linux-original.svg`,
+  "vs code": `${DEVICON_BASE}/vscode/vscode-original.svg`,
+  "vim editor": `${DEVICON_BASE}/vim/vim-original.svg`,
+};
+
+const NEEDS_LIGHT_BG = new Set(["github"]);
+
+function TechIcon({ name }: { name: string }) {
+  const key = name.toLowerCase();
+  const src = TECH_ICON_MAP[name.toLowerCase()];
+  if (!src) return null;
+  if (NEEDS_LIGHT_BG.has(key)) {
+    return (
+      <span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-white p-[1px]">
+        <img src={src} alt={`${name} logo`} loading="lazy" className="h-full w-full" />
+      </span>
+    );
+  }
+  return (
+    <img
+      src={src}
+      alt={`${name} logo`}
+      loading="lazy"
+      className="h-3.5 w-3.5"
+    />
   );
 }
