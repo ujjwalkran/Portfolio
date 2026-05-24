@@ -80,7 +80,6 @@ If you push this repo to GitHub and connect it to Vercel, use:
 
 ## 💡 Notes
 
-- `@lovable.dev/vite-tanstack-config` already handles the needed Vite plugins, so the config stays minimal.
 - The portfolio uses a custom `api/ssr.ts` wrapper to ensure Vercel serves both SSR HTML and static assets correctly.
 - Use `npm run vercel-build` before `npx vercel dev` to ensure the built asset output exists.
 
