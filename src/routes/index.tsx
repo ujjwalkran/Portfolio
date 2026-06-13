@@ -344,7 +344,7 @@ function Portfolio() {
               </div>
               <div className="mt-4">
                 <a
-                  href="https://learn.microsoft.com/"
+                  href="https://learn.microsoft.com/api/credentials/share/en-us/UjjwalKaran-2431/3EC95F9CD898ECD9?sharingId=5DEBF0819FAEB48"
                   target="_blank"
                   rel="noreferrer"
                   className="group inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1.5 font-mono text-[11px] transition hover:border-primary hover:text-primary-glow"
