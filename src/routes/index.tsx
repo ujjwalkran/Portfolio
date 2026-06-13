@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import {
   Mail, MapPin, Github, Linkedin, ArrowUpRight, Code2, Briefcase,
   GraduationCap, Sparkles, Calendar, Building2, Award, Terminal,
-  ExternalLink, FolderGit2,
+  ExternalLink, FolderGit2, BadgeCheck, Users,
   Wrench,
 } from "lucide-react";
 
@@ -315,6 +315,77 @@ function Portfolio() {
             </div>
           </section>
 
+          {/* Licenses & Certifications */}
+          <section className="bento-card md:col-span-6">
+            <div className="mb-5 flex items-center gap-3">
+              <BadgeCheck className="h-6 w-6 text-primary-glow" />
+              <h2 className="font-mono text-2xl font-semibold">Licenses & Certifications</h2>
+            </div>
+            <article className="rounded-xl border border-border bg-surface-elevated/60 p-5 transition hover:border-primary/60">
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <div>
+                  <h3 className="font-mono text-lg font-semibold">GitHub Foundations</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    <span className="text-foreground">Microsoft</span> · Credential ID 3EC95F9CD898ECD9
+                  </p>
+                </div>
+                <span className="inline-flex items-center gap-1.5 font-mono text-xs text-muted-foreground">
+                  <Calendar className="h-3.5 w-3.5" />
+                  Issued Dec 2025 · Expires Dec 2027
+                </span>
+              </div>
+              <div className="mt-3 flex flex-wrap gap-1.5">
+                {["Git", "GitHub"].map((s) => (
+                  <span key={s} className="inline-flex items-center gap-1.5 rounded-md bg-surface px-2 py-1 font-mono text-[11px] text-muted-foreground">
+                    <TechIcon name={s} />
+                    {s}
+                  </span>
+                ))}
+              </div>
+              <div className="mt-4">
+                <a
+                  href="https://learn.microsoft.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1.5 font-mono text-[11px] transition hover:border-primary hover:text-primary-glow"
+                >
+                  Show credential
+                  <ExternalLink className="h-3 w-3 opacity-60 transition group-hover:opacity-100" />
+                </a>
+              </div>
+            </article>
+          </section>
+          {/* Volunteering */}
+          <section className="bento-card md:col-span-6">
+            <div className="mb-5 flex items-center gap-3">
+              <Users className="h-6 w-6 text-primary-glow" />
+              <h2 className="font-mono text-2xl font-semibold">Volunteering</h2>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2">
+              <VolunteerCard
+                role="President"
+                org="HackerEarth Hub, NMAMIT"
+                period="Sep 2022 – May 2023 · 9 mos"
+                cause="Science and Technology"
+                description="Organized coding competitions for over 200 participants, promoting a competitive coding culture in college."
+              />
+              <VolunteerCard
+                role="Secretary"
+                org="ACM-NMAMIT"
+                period="Aug 2022 – Jul 2023 · 1 yr"
+                cause="Science and Technology"
+                description="Led and supervised diverse tech and non-tech events to foster a dynamic learning community."
+              />
+              <VolunteerCard
+                role="2nd Year Representative"
+                org="ACM-NMAMIT"
+                period="Oct 2021 – Sep 2022 · 1 yr"
+                cause="Science and Technology"
+                description="Actively volunteered, publicized events, and gathered feedback from students."
+              />
+            </div>
+          </section>
+
           {/* Contact CTA */}
           <section className="bento-card md:col-span-6">
             <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
@@ -414,6 +485,32 @@ function EducationItem({
     </div>
   );
 }
+
+function VolunteerCard({
+  role, org, period, cause, description,
+}: { role: string; org: string; period: string; cause: string; description: string }) {
+  return (
+    <article className="rounded-xl border border-border bg-surface-elevated/60 p-4 transition hover:border-primary/60">
+      <div className="flex flex-wrap items-start justify-between gap-2">
+        <div>
+          <h3 className="font-mono text-base font-semibold">{role}</h3>
+          <p className="mt-0.5 text-sm text-muted-foreground">
+            <span className="text-foreground">{org}</span>
+          </p>
+        </div>
+        <span className="inline-flex items-center gap-1.5 font-mono text-[11px] text-muted-foreground">
+          <Calendar className="h-3 w-3" />
+          {period}
+        </span>
+      </div>
+      <p className="mt-2 inline-block rounded-md bg-surface px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-primary-glow">
+        {cause}
+      </p>
+      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{description}</p>
+    </article>
+  );
+}
+
 
 function ContactLink({ href, icon, label }: { href: string; icon: React.ReactNode; label: string }) {
   return (
