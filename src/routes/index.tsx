@@ -118,7 +118,7 @@ function Portfolio() {
                   <ArrowUpRight className="h-4 w-4 transition group-hover:rotate-45" />
                 </a>
                 <a
-                  href="/resume.pdf"
+                  href="/Ujjwal_Karan_Resume.pdf"
                   className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-5 py-3 font-mono text-sm font-medium transition hover:border-primary"
                 >
                   Download résumé
