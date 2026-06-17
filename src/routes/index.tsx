@@ -119,6 +119,7 @@ function Portfolio() {
                 </a>
                 <a
                   href="/Ujjwal_Karan_Resume.pdf"
+                  download
                   className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-5 py-3 font-mono text-sm font-medium transition hover:border-primary"
                 >
                   Download résumé
