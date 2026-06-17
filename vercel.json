@@ -1,6 +1,7 @@
 {
   "version": 2,
   "routes": [
+    { "src": "/Ujjwal_Karan_Resume.pdf", "dest": "/Ujjwal_Karan_Resume.pdf" },
     { "src": "/assets/(.*)", "dest": "/api/ssr" },
     { "src": "/api/(.*)", "dest": "/api/$1" },
     { "src": "/(.*)", "dest": "/api/ssr" }
